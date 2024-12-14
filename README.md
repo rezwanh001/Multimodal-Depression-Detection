@@ -38,7 +38,6 @@ Gnome       :   46.0
 
 ### Dataset Paper:
 
-    ```
     @inproceedings{yoon2022d,
         title={D-vlog: Multimodal vlog dataset for depression detection},
         author={Yoon, Jeewoo and Kang, Chaewon and Kim, Seungbae and Han, Jinyoung},
@@ -48,4 +47,3 @@ Gnome       :   46.0
         pages={12226--12234},
         year={2022}
     }
-    ```
