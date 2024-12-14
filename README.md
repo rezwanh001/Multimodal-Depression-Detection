@@ -31,7 +31,7 @@ Gnome       :   46.0
 
 - To train and validate:
 
-    ```$ python mainkfold.py``
+    ```$ python mainkfold.py```
 
 - To inference:
     ```$ python infer_mainkfold.py```
