@@ -1,0 +1,14 @@
+data_dir: "./data/dvlog-dataset"
+train_gender: both
+test_gender: both
+
+model: DepDet # DepressionDet # DepressionDetector # 
+
+num_folds: 10
+epochs: 200
+batch_size: 8
+learning_rate: 1e-4
+lr_scheduler: other # cos
+device:
+  - "cuda"
+
