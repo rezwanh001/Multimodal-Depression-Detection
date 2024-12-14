@@ -1,0 +1,10 @@
+matplotlib
+seaborn
+scikit-learn
+tqdm
+numpy
+umap-learn
+torch
+pyyaml
+termcolor
+scipy
