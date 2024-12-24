@@ -4,6 +4,8 @@ import torch
 from models import DepDet
 from datasets import get_dvlog_dataloader
 import matplotlib.pyplot as plt
+from matplotlib.colors import Normalize
+from matplotlib.cm import ScalarMappable
 from matplotlib.colors import LinearSegmentedColormap
 
 # Function to extract CAM weights
@@ -86,6 +88,128 @@ def plot_cam_heatmap(cam_weights, labels, class_list, save_path):
     plt.show()
 
 
+def plot_weights_heatmap(cam_weights, labels, class_list, save_path_prefix):
+    """
+    Plots separate CAM heatmaps for each class, with one heatmap per figure.
+
+    Args:
+        cam_weights (ndarray): CAM weights for all samples, shape (n_samples, time_steps).
+        labels (ndarray): Class labels for each sample, shape (n_samples,).
+        class_list (list): List of class names corresponding to class indices.
+        save_path_prefix (str): Prefix for saving the heatmap figures.
+
+    Returns:
+        None
+    """
+    for class_idx, class_name in enumerate(class_list):
+        # Create a new figure for each class
+        plt.rcParams['axes.linewidth'] = 1.5 #set the value globally
+        plt.figure(figsize=(8, 6))
+
+        # Get the CAM weights for the specific class
+        class_cam_weights = cam_weights[labels == class_idx]
+
+        # Ensure class_cam_weights has 2D shape
+        if len(class_cam_weights.shape) == 1:
+            class_cam_weights = class_cam_weights.reshape(1, -1)
+
+        # # Plot heatmap
+        # sns.heatmap(class_cam_weights, cmap="YlGnBu", 
+        #             cbar=True,
+        #             vmin=-1,  # Minimum value for color bar
+        #             vmax=1 # Maximum value for color bar
+        #             )
+
+        # -----------------------------------------
+        # Plot the heatmap without automatically adding a colorbar
+        sns.heatmap(class_cam_weights, cmap="YlGnBu", cbar=False)
+
+        # Create a custom colorbar
+        norm = Normalize(vmin=-2, vmax=2)  # Set the desired colorbar range
+        sm = ScalarMappable(norm=norm, cmap="YlGnBu")
+
+        # Add the colorbar to the plot
+        cbar = plt.colorbar(sm, ax=plt.gca(), orientation="vertical")
+        # cbar.set_label("Custom Colorbar")
+        # ----------------------------------------------
+
+        # Set the labels
+        plt.xlabel("Sequence Length", fontweight='bold')
+        plt.ylabel("Id Number", fontweight='bold')
+        
+        # Add ticks for the x-axis and y-axis with labels
+        num_time_points = class_cam_weights.shape[1]
+        plt.xticks(ticks=[i for i in range(0, num_time_points, 50)], labels=[str(i) for i in range(0, num_time_points, 50)])
+        
+        num_people = class_cam_weights.shape[0]
+        plt.yticks(ticks=[i for i in range(0, num_people, 25)], labels=[str(i) for i in range(0, num_people, 25)])
+
+
+        # plt.xlabel("Time (s)")
+        # plt.ylabel("Person ID")
+        # plt.title(f"Visualization of CAM weight in {class_name}")
+
+        # Save figure
+        save_path = f"{save_path_prefix}_{class_name}.png"
+        plt.tight_layout()
+        plt.savefig(save_path, dpi=300)
+        # plt.show()
+
+
+
+def __plot_weights_heatmap(cam_weights, labels, class_list, save_path):
+    """
+    Plots heatmaps for CAM weights with separate subplots for each class.
+
+    Args:
+        cam_weights (ndarray): CAM weights for all samples, shape (n_samples, time_steps).
+        labels (ndarray): Class labels for each sample, shape (n_samples,).
+        class_list (list): List of class names corresponding to class indices.
+        save_path (str): Path to save the generated plot.
+
+    Returns:
+        None
+    """
+    # Set figure size to improve clarity
+    plt.figure(figsize=(10, 12))
+
+    for class_idx, class_name in enumerate(class_list):
+        # Create subplot for each class
+        plt.subplot(len(class_list), 1, class_idx + 1)
+
+        # Get CAM weights for the current class
+        class_cam_weights = cam_weights[labels == class_idx]
+
+        # Ensure 2D shape for CAM weights
+        if len(class_cam_weights.shape) == 1:
+            class_cam_weights = class_cam_weights.reshape(1, -1)
+
+        # Plot heatmap
+        sns.heatmap(
+            class_cam_weights, 
+            cmap="YlGnBu", 
+            cbar=True, 
+            xticklabels=50, 
+            yticklabels=25
+        )
+
+        # Set axis labels
+        plt.xlabel("Sequence Length", fontweight="bold")
+        plt.ylabel("ID Number", fontweight="bold")
+
+        # Add title for each subplot
+        plt.title(f"(a) Visualization of CAM weights in {class_name}", fontweight="bold")
+
+    # Add space between subplots
+    plt.subplots_adjust(hspace=0.5)
+
+    # Save and display the plot
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=300)
+    plt.show()
+
+
+
 # Function to average CAM weights across folds
 def average_cam_weights_across_folds(cam_weights_list):
     # Stack all CAM weights along a new axis (fold axis) and compute the mean across folds
@@ -129,21 +253,25 @@ def main():
 
         # Plot the CAM heatmaps for each class
         print(f"Fold Number: {fold+1}")
-        plot_cam_heatmap(cam_weights, labels, class_list, f"./results/TSNE/CAM_Heatmap_depression_{fold+1}.png")
+        # plot_cam_heatmap(cam_weights, labels, class_list, f"./results/TSNE/CAM_Heatmap_depression_{fold+1}.png")
 
-        # Accumulate CAM weights for averaging
-        cam_weights_list.append(cam_weights)
+        # __plot_weights_heatmap(cam_weights, labels, class_list, f"./results/TSNE/CAM_Heatmap_depression_{fold+1}.png")
 
-        # Store labels (assuming labels are the same for all folds)
-        if fold == 0:
-            labels_list = labels  # Save only once, as labels should be the same
+        plot_weights_heatmap(cam_weights, labels, class_list, f"./results/TSNE/CAM_Heatmap_depression_{fold+1}.png")
 
-    # Average CAM weights across all folds
-    averaged_cam_weights = average_cam_weights_across_folds(cam_weights_list)
+    #     # Accumulate CAM weights for averaging
+    #     cam_weights_list.append(cam_weights)
 
-    # Plot the averaged CAM heatmaps for each class
-    print("Avg Plot!!!")
-    plot_cam_heatmap(averaged_cam_weights, labels_list, class_list, "./results/TSNE/CAM_Heatmap_depression_avg.png")
+    #     # Store labels (assuming labels are the same for all folds)
+    #     if fold == 0:
+    #         labels_list = labels  # Save only once, as labels should be the same
+
+    # # Average CAM weights across all folds
+    # averaged_cam_weights = average_cam_weights_across_folds(cam_weights_list)
+
+    # # Plot the averaged CAM heatmaps for each class
+    # print("Avg Plot!!!")
+    # plot_cam_heatmap(averaged_cam_weights, labels_list, class_list, "./results/TSNE/CAM_Heatmap_depression_avg.png")
 
 if __name__ == "__main__":
     main()
