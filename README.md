@@ -46,3 +46,8 @@ Gnome       :   46.0
         year={2025 [Submitted]},
         organization={IEEE}
     }
+
+### 🙌🏻 Acknowledgement
+
+- We acknowledge the wonderful work of [GSA-Network](https://openreview.net/forum?id=KiFeuZu24k) and [HAT-Net](https://arxiv.org/abs/2106.03180). 
+- The training pipelines are adapted from [depression-detection](https://github.com/AllenYolk/depression-detection).
