@@ -36,7 +36,7 @@ Gnome       :   46.0
 - To inference:
     ```$ python infer_mainkfold.py```
 
-### [Submitted] Paper:
+### 📖 Citation:
 
     @inproceedings{mdd-net,
         title={MDD-Net: Multimodal Depression Detection through Mutual Transformer}},
@@ -45,16 +45,4 @@ Gnome       :   46.0
         pages={--},
         year={2025 [Submitted]},
         organization={IEEE}
-    }
-
-### Dataset Paper:
-
-    @inproceedings{yoon2022d,
-        title={D-vlog: Multimodal vlog dataset for depression detection},
-        author={Yoon, Jeewoo and Kang, Chaewon and Kim, Seungbae and Han, Jinyoung},
-        booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-        volume={36},
-        number={11},
-        pages={12226--12234},
-        year={2022}
     }
