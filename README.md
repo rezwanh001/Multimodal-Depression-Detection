@@ -37,15 +37,18 @@ Gnome       :   46.0
     ```$ python infer_mainkfold.py```
 
 ### 📖 Citation:
+- If you find this project useful for your research, please cite this paper.
 
-    @inproceedings{mdd-net,
-        title={MDD-Net: Multimodal Depression Detection through Mutual Transformer}},
-        author={Haque, Md Rezwanul and Islam, Md. Milon and Raju, S M Taslim Uddin and Altaheri, Hamdi and Nassar, Lobna and Karray, Fakhri},
-        booktitle={2025 International Joint Conference on Neural Networks (IJCNN)},
-        pages={--},
-        year={2025 [Submitted]},
-        organization={IEEE}
-    }
+```bibtex
+@inproceedings{mdd-net,
+    title={MDD-Net: Multimodal Depression Detection through Mutual Transformer}},
+    author={Haque, Md Rezwanul and Islam, Md. Milon and Raju, S M Taslim Uddin and Altaheri, Hamdi and Nassar, Lobna and Karray, Fakhri},
+    booktitle={2025 International Joint Conference on Neural Networks (IJCNN)},
+    pages={--},
+    year={2025 [Submitted]},
+    organization={IEEE}
+}
+```
 
 ### 🙌🏻 Acknowledgement
 
