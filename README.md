@@ -1,14 +1,14 @@
 # Multimodal-Depression-Detection
-Multimodal Depression Detection through Mutual Transformer
+MDD-Net: Multimodal Depression Detection through Mutual Transformer
 ----
 
 **python implementation**
 
-```python
+<!-- ```python
 Version :   0.0.1  
 Author  :   Md Rezwanul Haque
 Email   :   mr3haque@uwaterloo.ca 
-```
+``` -->
 ---
 ### **Related resources**:
 
@@ -35,6 +35,17 @@ Gnome       :   46.0
 
 - To inference:
     ```$ python infer_mainkfold.py```
+
+### [Submitted] Paper:
+
+    @inproceedings{mdd-net,
+        title={MDD-Net: Multimodal Depression Detection through Mutual Transformer}},
+        author={Haque, Md Rezwanul and Islam, Md. Milon and Raju, S M Taslim Uddin and Altaheri, Hamdi and Nassar, Lobna and Karray, Fakhri},
+        booktitle={2025 International Joint Conference on Neural Networks (IJCNN)},
+        pages={--},
+        year={2025 [Submitted]},
+        organization={IEEE}
+    }
 
 ### Dataset Paper:
 
