@@ -1,6 +1,7 @@
 # Multimodal-Depression-Detection
 Paper Title: **MDD-Net: Multimodal Depression Detection through Mutual Transformer**
-***Proceedings of the 2025 IEEE International Conference on Systems, Man, and Cybernetics (SMC), Vienna, Austria. Copyright 2025 by the author(s).***
+
+#### ***Proceedings of the 2025 IEEE International Conference on Systems, Man, and Cybernetics (SMC), Vienna, Austria. Copyright 2025 by the author(s).***
 ----
 
 **python implementation**
