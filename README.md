@@ -39,7 +39,7 @@ Gnome       :   46.0
     ```$ python infer_mainkfold.py```
 
 ### 📖 Citation:
-- If you find this project useful for your research, please cite this paper.
+- If you find this project useful for your research, please cite [this paper](https://arxiv.org/abs/****.*****)
 
 ```bibtex
 @inproceedings{haque2025mdd,
