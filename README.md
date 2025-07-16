@@ -1,5 +1,6 @@
 # Multimodal-Depression-Detection
-MDD-Net: Multimodal Depression Detection through Mutual Transformer
+Paper Title: **MDD-Net: Multimodal Depression Detection through Mutual Transformer**
+***Proceedings of the 2025 IEEE International Conference on Systems, Man, and Cybernetics (SMC), Vienna, Austria. Copyright 2025 by the author(s).***
 ----
 
 **python implementation**
@@ -27,7 +28,7 @@ Gnome       :   46.0
 * **pip requirements**: ```pip install -r requirements.txt``` 
 
 ### Execution (Depression Detection)
-- ```$ conda activate your_env``` --> ```i.e., $ conda activate rezwan``` 
+- ```$ conda activate your_env```
 
 - To train and validate:
 
@@ -40,13 +41,11 @@ Gnome       :   46.0
 - If you find this project useful for your research, please cite this paper.
 
 ```bibtex
-@inproceedings{mdd-net,
-    title={MDD-Net: Multimodal Depression Detection through Mutual Transformer}},
+@inproceedings{haque2025mdd,
+    title={MDD-Net: Multimodal Depression Detection through Mutual Transformer},
     author={Haque, Md Rezwanul and Islam, Md. Milon and Raju, S M Taslim Uddin and Altaheri, Hamdi and Nassar, Lobna and Karray, Fakhri},
-    booktitle={2025 International Joint Conference on Neural Networks (IJCNN)},
-    pages={--},
-    year={2025 [Submitted]},
-    organization={IEEE}
+    journal = {arXiv preprint arXiv:****.*****},
+    year = {2025}
 }
 ```
 
@@ -54,3 +53,9 @@ Gnome       :   46.0
 
 - We acknowledge the wonderful work of [GSA-Network](https://openreview.net/forum?id=KiFeuZu24k) and [HAT-Net](https://arxiv.org/abs/2106.03180). 
 - The training pipelines are adapted from [depression-detection](https://github.com/AllenYolk/depression-detection).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
